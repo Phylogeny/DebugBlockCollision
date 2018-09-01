@@ -1,0 +1,16 @@
+[
+{
+  "modid": "debugblockcollision",
+  "name": "Debug Block Collision",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://minecraft.curseforge.com/projects/debug-block-collision",
+  "updateJSON": "${updatejson}",
+  "authorList": ["Phylogeny"],
+  "credits": "",
+  "logoFile": "assets/debugblockcollision/logo/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
