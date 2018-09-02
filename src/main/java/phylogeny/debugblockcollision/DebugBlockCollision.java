@@ -43,7 +43,6 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper.UnableToAccessFieldExc
 import net.minecraftforge.fml.relauncher.ReflectionHelper.UnableToFindMethodException;
 import net.minecraftforge.fml.relauncher.Side;
 import phylogeny.debugblockcollision.ConfigMod.Mode;
-import phylogeny.debugblockcollision.ConfigMod.ModeNames;
 
 @EventBusSubscriber(Side.CLIENT)
 @Mod(modid = DebugBlockCollision.MOD_ID,
@@ -137,14 +136,13 @@ public class DebugBlockCollision
 
 			// Update config file
 			Configuration configFile = getConfigFile();
-			Property prop = configFile.get("client", "Mode", ModeNames.BLOCK_HOVERED.toString());
-			ModeNames name = ModeNames.values()[ConfigMod.CLIENT.mode.ordinal()];
-			prop.setValue(name.toString());
+			Property prop = configFile.get("client", "Mode", Mode.BLOCK_HOVERED.toString());
+			prop.setValue(ConfigMod.CLIENT.mode.toString());
 			prop.setComment(MODE_COMMENT);
 			configFile.save();
 
 			// Send chat message
-			debugFeedbackTranslated(name.getChatKey());
+			debugFeedbackTranslated(ConfigMod.CLIENT.mode.getChatKey());
 		}
 	}
 
@@ -174,7 +172,7 @@ public class DebugBlockCollision
 		World world = player.world;
 		float ticks = event.getPartialTicks();
 		List<ColoredBox> boxes = new ArrayList<>();
-		if (ConfigMod.CLIENT.mode.ordinal() == ModeNames.BLOCK_HOVERED.ordinal())
+		if (ConfigMod.CLIENT.mode == Mode.BLOCK_HOVERED)
 		{
 			// Add all collision/bounding boxes for block looked at
 			RayTraceResult target = Minecraft.getMinecraft().objectMouseOver;
@@ -213,7 +211,7 @@ public class DebugBlockCollision
 		else
 		{
 			double x, y, z;
-			if (ConfigMod.CLIENT.mode.ordinal() == ModeNames.BOXES_COLLIDED.ordinal())
+			if (ConfigMod.CLIENT.mode == Mode.BOXES_COLLIDED)
 			{
 				// Add all collision boxes that the player is collided with
 				AxisAlignedBB playerBoundingBox = player.getEntityBoundingBox().grow(0.001);

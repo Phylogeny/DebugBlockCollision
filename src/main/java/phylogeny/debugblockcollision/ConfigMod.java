@@ -7,7 +7,6 @@ import net.minecraftforge.common.config.Config.Name;
 import net.minecraftforge.common.config.Config.RangeDouble;
 import net.minecraftforge.common.config.Config.Type;
 import net.minecraftforge.common.config.ConfigManager;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -20,12 +19,6 @@ public class ConfigMod
 {
 	private static final String PREFIX = "config." + DebugBlockCollision.MOD_ID + ".client";
 
-	static
-	{
-		for (ModeNames name : ModeNames.values())
-			EnumHelper.addEnum(Mode.class, name.toString(), new Class<?>[0]);
-	}
-
 	@Name("Client")
 	@Comment("Client-only configs.")
 	@LangKey(PREFIX)
@@ -36,7 +29,7 @@ public class ConfigMod
 		@Name("Mode")
 		@Comment(DebugBlockCollision.MODE_COMMENT)
 		@LangKey(PREFIX + ".mode")
-		public Mode mode = Mode.values()[0];
+		public Mode mode = Mode.BLOCKS_IN_RADIUS;
 
 		@Name("Render Radius")
 		@Comment("If mode is set to 'Blocks In Radius', this sets the radius in meters that those block boxes will render within.")
@@ -56,9 +49,7 @@ public class ConfigMod
 		public boolean renderObscuredLines = true;
 	}
 
-	public enum Mode {}
-
-	public enum ModeNames
+	public enum Mode
 	{
 		BLOCKS_IN_RADIUS("radius"),
 		BOXES_COLLIDED("collided"),
@@ -66,7 +57,7 @@ public class ConfigMod
 
 		private String name, chatKey;
 
-		private ModeNames(String chatKey)
+		private Mode(String chatKey)
 		{
 			this.chatKey = chatKey;
 			name = "";
