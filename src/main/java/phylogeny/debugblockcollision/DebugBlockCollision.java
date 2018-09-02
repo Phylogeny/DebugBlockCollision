@@ -61,9 +61,9 @@ public class DebugBlockCollision
 	public static final String MC_VERSIONS_ACCEPTED = "[1.12.2,)";
 	public static final boolean CLIENT_OLNY = true;
 	public static final String MODE_COMMENT = "If set to 'Blocks In Radius', all collision/bounding boxes that are not single full-blocks will render within a "
-			+ "radius around the player. If set to 'Boxes Collided', only collision boxes that the player is currently colliding with will render. If set to "
-			+ "'Blocks Hovered', only the collision/bounding of the block the player is looking at will render (sneaking will cause only the single box looked "
-			+ "at to render). [full collision boxes = green; non-full collision boxes = blue; bounding boxes (for blocks with no collision boxes) = red]";
+			+ "radius around the player. If set to 'Boxes Collided', only collision/bounding boxes that the player is currently colliding with will render. If "
+			+ "set to 'Blocks Hovered', only the collision/bounding of the block the player is looking at will render (sneaking will cause only the single box "
+			+ "looked at to render). [full collision boxes = green; non-full collision boxes = blue; bounding boxes (for blocks with no collision boxes) = red]";
 
 	public static Logger logger;
 
