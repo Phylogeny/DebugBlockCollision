@@ -136,8 +136,8 @@ public class DebugBlockCollision
 
 			// Update config file
 			Configuration configFile = getConfigFile();
-			Property prop = configFile.get("client", "Mode", Mode.BLOCK_HOVERED.toString());
-			prop.setValue(ConfigMod.CLIENT.mode.toString());
+			Property prop = configFile.get("client", "Mode", Mode.BLOCK_HOVERED.name());
+			prop.setValue(ConfigMod.CLIENT.mode.name());
 			prop.setComment(MODE_COMMENT);
 			configFile.save();
 
